@@ -3,6 +3,7 @@ const app = express();
 const catRouter = require('./routes/catRouter');
 
 app.use(express.static('public'));
+app.use(express.json());
 app.use('/css', express.static(__dirname + 'public/css'));
 
 

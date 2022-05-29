@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const images = JSON.parse(String(fs.readFileSync(`${__dirname}/../dev-data/data/cat-image-list.json`)));
 
 exports.getRandomImage = (req, res) => {
@@ -11,5 +10,20 @@ exports.getRandomImage = (req, res) => {
             data : {
                 image
             }
+        });
+}
+
+exports.addImage = (req, res) => {
+        const newID = images[images.length - 1].id + 1;
+        const newImage = Object.assign({id : newID}, req.body);
+        console.log(req.body);
+        images.push(newImage);
+        fs.writeFile(`${__dirname}/dev-data/data/cat-image-list.json`, JSON.stringify(images), err => {
+            res.status(201).json({
+                status : 'success',
+                data : {
+                    image : newImage
+                }
+            })
         })
 }
