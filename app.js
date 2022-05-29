@@ -1,19 +1,19 @@
 const express = require('express');
-const fs = require('fs');
-
 const app = express();
+const catRouter = require('./routes/catRouter');
+
 app.use(express.static('public'));
 app.use('/css', express.static(__dirname + 'public/css'));
 
 
 app.set('view engine', 'ejs');
-const cats = JSON.parse(String(fs.readFileSync(`${__dirname}/./dev-data/data/cat-image-list.json`)));
+app.use('/', catRouter);
 
-
-
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.render('index');
-})
+})*/
+
+
 
 const port = 3000;
 app.listen(port, () => {
