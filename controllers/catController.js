@@ -5,12 +5,14 @@ exports.getRandomImage = (req, res) => {
         const randomIndex = Math.floor(Math.random() * images.length);
         const image = images[randomIndex];
 
-        res.status(200).json({
+        res.render('index');
+
+       /* res.status(200).json({
             status : 'success',
             data : {
                 image
             }
-        });
+        });*/
 }
 
 exports.addImage = (req, res) => {
