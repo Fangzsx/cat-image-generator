@@ -5,7 +5,9 @@ const app = express();
 
 const cats = JSON.parse(String(fs.readFileSync(`${__dirname}/./dev-data/data/cat-image-list.json`)));
 
-console.log(cats);
+app.get('/', (req, res) => {
+    res.status(200).send('Homepage');
+});
 
 const port = 3000;
 app.listen(port, () => {
