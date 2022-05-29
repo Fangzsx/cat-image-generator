@@ -6,7 +6,6 @@ exports.getRandomImage = (req, res) => {
         const image = images[randomIndex];
 
         res.render('index');
-
        /* res.status(200).json({
             status : 'success',
             data : {
